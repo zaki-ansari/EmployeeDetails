@@ -36,6 +36,7 @@ public class CountryServiceImpl implements CountryService{
 	@Override
 	public Country deleteCountry(Integer countryId) {
 		Country deletedCountry = this.countryRepo.findById(countryId).orElseThrow(()->new ResourceNotFoundException("Country not found with this id :"+countryId));
+		this.countryRepo.delete(deletedCountry);
 		return deletedCountry;
 	}
 

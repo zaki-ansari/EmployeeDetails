@@ -36,6 +36,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 	@Override
 	public Employee deleteEmployee(Integer employeeId) {
 		Employee deletedEmployee = this.employeeRepo.findById(employeeId).orElseThrow(()-> new ResourceNotFoundException("Employee not found with this id :"+employeeId));
+		this.employeeRepo.delete(deletedEmployee);
 		return deletedEmployee;
 	}
 

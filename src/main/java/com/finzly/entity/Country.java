@@ -1,13 +1,12 @@
 package com.finzly.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,9 +23,8 @@ public class Country {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer cid;
 	private String cname;
-	
-	@OneToOne(mappedBy = "country")
-	@JsonIgnore
+
+	@OneToOne(mappedBy = "country", cascade = CascadeType.ALL)
 	private Employee employee;
 	
 	
